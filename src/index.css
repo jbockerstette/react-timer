@@ -1,5 +1,18 @@
+html {
+  box-sizing: border-box;
+  font-size: 10px;
+  background: #8e24aa;
+  background: linear-gradient(45deg, #42a5f5, #478ed1, #0d47a1);
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 body {
   margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+  text-align: center;
+  font-family: "Inconsolata", monospace;
 }
