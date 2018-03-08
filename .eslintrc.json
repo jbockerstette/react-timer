@@ -12,6 +12,7 @@
     "no-console": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": "off",
+    "react/prop-types": [2, { "ignore": ["children"] }],
     "no-undef": "off",
     "prettier/prettier": ["error", { "singleQuote": true }]
   }

@@ -4,7 +4,7 @@ import Display from './Display';
 import './Timer.css';
 
 const Timer = () => (
-  <div>
+  <div className="timer">
     <TimerControls />
     <Display />
   </div>

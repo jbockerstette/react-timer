@@ -1,10 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Timer from './Timer';
 
-class App extends Component {
-  render() {
-    return <Timer />;
-  }
-}
+const App = () => <Timer />;
 
 export default App;
