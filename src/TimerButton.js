@@ -1,9 +1,8 @@
 import React from 'react';
+import './TimerButton.css';
 
 const TimerButton = props => (
-  <div>
-    <button>{props.children}</button>
-  </div>
+  <button className="timer__button">{props.children}</button>
 );
 
 export default TimerButton;
