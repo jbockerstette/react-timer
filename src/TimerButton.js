@@ -1,8 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './TimerButton.css';
 
 const TimerButton = props => (
-  <button className="timer__button">{props.children}</button>
+  <button onClick={props.onClick} className="timer__button">
+    {props.children}
+  </button>
 );
+
+TimerButton.propTypes = {
+  onClick: PropTypes.func.isRequired
+};
 
 export default TimerButton;
