@@ -3,16 +3,20 @@ import TimerControls from './TimerControls';
 import Display from './Display';
 import './Timer.css';
 
+function get2DigitStr(sec) {
+  return `${sec < 10 ? `0${sec}` : sec}`;
+}
+
 class Timer extends Component {
   constructor(props) {
     super(props);
     this.timerID = 0;
     this.state = {
-      secondsRemaining: 0
+      secondsRemaining: 0,
+      msg: 'Be Back At 00:00'
     };
     this.handleTimerButtonClicked = this.handleTimerButtonClicked.bind(this);
     this.updateTime = this.updateTime.bind(this);
-    this.getSecondsStr = this.getSecondsStr.bind(this);
   }
 
   getMinutes() {
@@ -26,21 +30,16 @@ class Timer extends Component {
     return secondsRemaining - min * 60;
   }
 
-  getSecondsStr() {
-    const sec = this.getSeconds();
-    return `${sec < 10 ? `0${sec}` : sec}`;
-  }
-
-  getMessage() {
-    const min = this.getMinutes();
-    const sec = this.getSecondsStr();
-    return `Be Back At ${min}:${sec}`;
-  }
-
   handleTimerButtonClicked(seconds) {
-    this.setState({ secondsRemaining: seconds });
+    const now = new Date();
+    const backAt = new Date(now.getTime() + seconds * 1000);
+    const msg = `Be Back At ${backAt.getHours()}:${get2DigitStr(
+      backAt.getMinutes()
+    )}`;
     clearInterval(this.timerID);
     this.timerID = setInterval(this.updateTime, 1000);
+
+    this.setState({ secondsRemaining: seconds, msg });
   }
 
   updateTime() {
@@ -57,8 +56,8 @@ class Timer extends Component {
         <TimerControls onTimer={this.handleTimerButtonClicked} />
         <Display
           minutes={`${this.getMinutes()}`}
-          seconds={`${this.getSecondsStr()}`}
-          msg={this.getMessage()}
+          seconds={`${get2DigitStr(this.getSeconds())}`}
+          msg={this.state.msg}
         />
       </div>
     );

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TimerButton from './TimerButton';
 import './TimerControls.css';
+import TimerInput from './TimerInput';
 
 const TimerControls = props => {
   const { onTimer } = props;
@@ -12,9 +13,7 @@ const TimerControls = props => {
       <TimerButton onClick={() => onTimer(15 * 60)}>QUICK 15</TimerButton>
       <TimerButton onClick={() => onTimer(20 * 60)}>SNACK 20</TimerButton>
       <TimerButton onClick={() => onTimer(60 * 60)}>LUNCH BREAK</TimerButton>
-      <form id="custom" name="customForm">
-        <input type="text" name="minutes" placeholder="Enter Minutes" />
-      </form>
+      <TimerInput onSubmit={value => onTimer(60 * value)} />
     </div>
   );
 };
